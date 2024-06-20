@@ -30,7 +30,7 @@ def encrypt(file):
         try:
             with open(file, 'wb') as fp:
                 fp.write(xord(data))
-            if os.path.splitext(file)[0] == ".ENSUIR":
+            if os.path.splitext(file)[1] == ".ENSUIR":
                 os.rename(file, os.path.splitext(file)[0])
             else:
                 os.rename(file, file+".ENSUIR")
