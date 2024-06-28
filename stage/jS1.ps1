@@ -11,5 +11,4 @@ Get-ADComputer -Filter * | select Name
 Get-ADGroup -Filter * | select name
 Get-ADGroup -Filter 'Name -like "*admin*"' | select Name
 Get-ADForest
-Get-ADTrust
-Get-ADTrust -Filter 'msDS-TrustForestTrustInfo -ne "$null"'
+Get-ADTrust -Filter *
