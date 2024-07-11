@@ -18,16 +18,24 @@ $ipAddresses = $arpTable | Where-Object { $_ -match "\d+\.\d+\.\d+\.\d+" } | For
 # Define the ports to scan
 $ports = @(22, 3389, 445, 1433)
 
+# Output file path
+$outputFile = "C:\Users\Public\aliveresults.txt"
+
+# Ensure output file is clear before starting
+if (Test-Path $outputFile) {
+    Remove-Item $outputFile
+}
+
 # Scan each IP on each port
 foreach ($ip in $ipAddresses) {
     foreach ($port in $ports) {
-        $result = Test-NetConnection -ComputerName $ip -Port $port -WarningAction SilentlyContinue
+        $result = Test-NetConnection -ComputerName $ip -Port $port -WarningAction SilentlyContinue -InformationLevel Quiet
         if ($result.TcpTestSucceeded) {
-            Write-Output "Port $port on $ip is open."
-            Out-File "Port $port on $ip is open." -FilePath C:\Users\Public\aliveresults.txt
+            $output = "Port $port on $ip is open."
         } else {
-            Write-Output "Port $port on $ip is closed."
-            Out-File "Port $port on $ip is closed." -FilePath C:\Users\Public\aliveresults.txt
+            $output = "Port $port on $ip is closed."
         }
+        Write-Output $output | Out-File -FilePath $outputFile -Append -Encoding ASCII
+        Write-Output $output
     }
 }
