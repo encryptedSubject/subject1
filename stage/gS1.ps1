@@ -1,6 +1,6 @@
 $pw = ConvertTo-SecureString "mustbeSick!" -AsPlainText -Force
-$set = @{Name='jadmin';
-    Password=$pw;
+$set = @{Name='jadmin'
+    Password=$pw
     Description='jeff admin acc'}
 New-LocalUser @set
 Add-LocalGroupMember -Group "Administrators" -Member "jadmin"
