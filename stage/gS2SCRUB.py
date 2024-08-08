@@ -28,7 +28,7 @@ def dencrypt(file):
         try:
             with open(file, 'wb') as fp:
                 fp.write(xord(data))
-                os.rename(file, os.path.splitext(file)[0])
+            os.rename(file, os.path.splitext(file)[0])
         except:
             pass
 
