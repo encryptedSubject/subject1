@@ -1,18 +1,24 @@
-Write-Output "[*] Removing jadmin"
+Write-Output "[!] TARU Test Clean-Up"
+
+Write-Output "[*] Cleaning gS1."
 Remove-LocalGroupMember -Group Administrators -Member jadmin
-Remove-LocalUser -Name "jadmin"
-Write-Output "[*] jadmin removed."
-
-Write-Output "[*] Removing RDP rule."
-Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -value 1
-Write-Output "[*] Rule removed"
-
-Write-Output "[*] Removing Firewall RDP rule"
+Write-Output "[!] User jadmin removed."
 Disable-NetFirewallRule -DisplayGroup "Remote Desktop"
-Write-Output "[*] Firewall RDP rule removed.
+Write-Output "[!] Disabled Remote Desktop firewall rule"
+Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -value 1
+Write-Output "[!] Removed Terminal Server registry value"
 
-Write-Output "[*] Removing 2exfil directory"
+Write-Output "[*] Cleaning jS2"
+Remove-Item -Path "C:\Users\Public\aliveresults.txt"
+Write-Output "[!] Removed aliveresults.txt"
+
+Write-Output "[*] Cleaning jS3"
+Remove-Item -Path "C:\temp\AnyDesk.exe"
+Write-Output "[!] Removed C:\temp\Anydesk.exe"
+
+Write-Output "[*] Cleaning kS1"
 Remove-Item 'C:\temp\2exfil' -Recurse
-Write-Output "[*] C:\temp\2exfil removed."
+Write-Output "[!] Removed C:\temp\2exfil directory."
 
-Write-Output "[*] All Actions Completed."
+Write-Output "[*] Clean up complete."
+PAUSE
