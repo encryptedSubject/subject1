@@ -1,4 +1,5 @@
-iex (new-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/samratashok/ADModule/master/Import-ActiveDirectory.ps1');Import-ActiveDirectory
+Install-WindowsFeature -Name "RSAT-AD-PowerShell" -IncludeAllSubFeature
+Import-Module -Name ActiveDirectory
 Get-ADDomain
 (Get-ADDomain).DomainSID
 Get-ADDomainController
